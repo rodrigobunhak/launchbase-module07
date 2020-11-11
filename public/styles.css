@@ -597,4 +597,24 @@ form .item #photos-preview img {
 .form input[name="cpf_cnpj"],
 .form input[name="cep"] {
   max-width: 60%;
+
+}
+
+/* validade errors */
+.input .error {
+  background-color: #e74c3c;
+  padding: 4px 0 4px 10px;
+  border-radius: 0 0 4px 4px;
+  color: white;
+
+  max-width: 60%;
+  
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.item .input .input-error {
+  border: 1px solid #e74c3c;
+  border-radius: 4px 4px 0 0;
+  outline: none;
 }
