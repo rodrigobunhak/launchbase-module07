@@ -208,7 +208,7 @@ const Validade = {
     div.classList.add('error')
     div.innerHTML = error
     input.parentNode.appendChild(div)
-    input.focus()
+    //input.focus()
 
     input.classList.add('input-error')
   },
@@ -218,7 +218,6 @@ const Validade = {
       errorDiv.remove()
 
     input.classList.remove('input-error')
-
   },
   isEmail(value) {
     let error = null
@@ -227,6 +226,37 @@ const Validade = {
 
     if (!value.match(mailFormat))
       error = "Email inválido"
+
+    return {
+      error,
+      value
+    }
+  },
+  isCpfCnpj(value) {
+    let error = null
+
+    const cleanValues = value.replace(/\D/g, "")
+
+    if (cleanValues.length > 11 && cleanValues.length !== 14) {
+      error = "CNPJ incorreto"
+    }
+    else if (cleanValues.length < 12 && cleanValues.length !== 11) {
+      error = "CPF incorreto"
+    }
+
+    return {
+      error,
+      value
+    }
+  },
+  isCep(value) {
+    let error = null
+
+    const cleanValues = value.replace(/\D/g, "")
+
+    if (cleanValues.length !== 8) {
+      error = "CEP incorreto"
+    }
 
     return {
       error,
