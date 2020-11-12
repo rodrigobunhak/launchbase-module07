@@ -8,7 +8,7 @@ async function post(req, res, next) {
     if (req.body[key] == "") {
       return res.render('user/register', {
         user: req.body,
-        error: 'Há campos obrigatórios sem preenchimento.'
+        error: 'Por favor, preencha todos os campos.'
       })
     }
   }
