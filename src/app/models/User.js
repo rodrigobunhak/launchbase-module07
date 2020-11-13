@@ -40,8 +40,8 @@ module.exports = {
       data.name,
       data.email,
       passwordHash,
-      data.cpf_cnpj.replace(/\d/g, ""),
-      data.cep.replace(/\d/g, ""),
+      data.cpf_cnpj.replace(/\D/g, ""),
+      data.cep.replace(/\D/g, ""),
       data.address
     ]
 

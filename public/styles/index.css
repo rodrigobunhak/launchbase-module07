@@ -106,9 +106,14 @@ header > div.container a {
   color: white;
   font-size: 36px;
   line-height: 46px;
+
 }
 
 .logo h2 {
+  /* background: linear-gradient(90deg,#e44b1c,var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+
   color: var(--primary-color);
   font-size: 14px;
   line-height: 16px;
