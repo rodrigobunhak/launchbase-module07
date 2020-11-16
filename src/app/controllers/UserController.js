@@ -27,6 +27,7 @@ module.exports = {
     
     try {
 
+      const { user } = req
       let { name, email, cpf_cnpj, cep, address } = req.body
       cpf_cnpj = cpf_cnpj.replace(/\D/g, "")
       cep = cep.replace(/\D/g, "")
@@ -40,6 +41,7 @@ module.exports = {
       })
 
       return res.render("user/index", {
+        user: user,
         success: "Conta atualizada com sucesso!"
       })
 

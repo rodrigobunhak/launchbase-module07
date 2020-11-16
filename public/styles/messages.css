@@ -28,3 +28,7 @@
 .messages.error {
   background: linear-gradient(270deg, #e73c3c, #c72c2c);
 }
+
+.messages.success {
+  background: linear-gradient(270deg, #15bb31, #0f9626);
+}
