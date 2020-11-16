@@ -24,10 +24,32 @@ module.exports = {
     return res.redirect('/users')
   },
   async update(req, res) {
-    // all fields
+    
+    try {
 
-    // has password
+      let { name, email, cpf_cnpj, cep, address } = req.body
+      cpf_cnpj = cpf_cnpj.replace(/\D/g, "")
+      cep = cep.replace(/\D/g, "")
 
-    // password match
+      await User.update(user.id, {
+        name,
+        email,
+        cpf_cnpj,
+        cep,
+        address
+      })
+
+      return res.render("user/index", {
+        success: "Conta atualizada com sucesso!"
+      })
+
+
+    }catch(err) {
+      console.error(err)
+      return res.render("user/index", {
+        error: "Algum erro aconteceu!"
+      })
+    }
+
   }
 }
