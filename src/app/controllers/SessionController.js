@@ -11,5 +11,11 @@ module.exports = {
     req.session.destroy()
 
     return res.redirect("/")
+  },
+  forgotForm(req, res) {
+    return res.render("session/forgot-password")
+  },
+  forgot(req, res) {
+    return true
   }
 }
