@@ -130,7 +130,16 @@ module.exports = {
     return res.redirect(`/products/${req.body.id}`)
   },
   async delete(req, res) {
-    await Product.delete(req.body.id)
+
+    const productId = req.body.id
+
+    const results = await Product.files(productId)
+    const files = results.rows
+
+    const removedFilesPromise = files.map(file => File.delete(file.id))
+    await Promise.all(removedFilesPromise)
+
+    await Product.delete(productId)
 
     return res.redirect('/products/create')
   }

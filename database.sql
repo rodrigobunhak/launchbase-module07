@@ -3,12 +3,12 @@ CREATE DATABASE launchstoredb;
 
 CREATE TABLE "products" (
   "id" SERIAL PRIMARY KEY,
-  "category_id" int UNIQUE,
-  "user_id" int UNIQUE,
+  "category_id" int,
+  "user_id" int,
   "name" text NOT NULL,
   "description" text NOT NULL,
   "old_price" int,
-  "prince" int NOT NULL,
+  "price" int NOT NULL,
   "quantity" int DEFAULT 0,
   "status" int DEFAULT 1,
   "created_at" timestamp DEFAULT (now()),
@@ -24,12 +24,12 @@ CREATE TABLE "files" (
   "id" SERIAL PRIMARY KEY,
   "name" text,
   "path" text,
-  "product_id" int UNIQUE
+  "product_id" int
 );
 
 ALTER TABLE "products" ADD FOREIGN KEY ("category_id") REFERENCES "categories" ("id");
 
-ALTER TABLE "files" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
+ALTER TABLE "files" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id") ON DELETE CASCADE;
 
 CREATE TABLE "users" (
   "id" SERIAL PRIMARY KEY,
@@ -44,7 +44,7 @@ CREATE TABLE "users" (
 );
 
 -- foreign key
-ALTER TABLE "products" ADD FOREIGN KEY ("USER_ID") REFERENCES "users" ("id");
+ALTER TABLE "products" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
 -- create procedure
 CREATE FUNCTION trigger_set_timestamp()
